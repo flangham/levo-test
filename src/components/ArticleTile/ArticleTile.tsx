@@ -1,15 +1,11 @@
 import React from 'react';
 import { parseDateTime } from '../../utilities/parseDateTime';
-import { limitTextLengthAndAddEllipsis } from '../../utilities/limitTextLengthAndAddEllipsis';
+import { limitTextLength } from '../../utilities/limitTextLength';
+import { Article } from '../../interfaces/Article';
 
+// Defines the properties we need to access for every article item in JSON response
 interface Props {
-  article: {
-    id: number;
-    title: string;
-    summary: string;
-    publishedAt: string;
-    url: string;
-  };
+  article: Article;
 }
 
 export const ArticleTile: React.FC<Props> = ({ article }) => {
@@ -19,7 +15,11 @@ export const ArticleTile: React.FC<Props> = ({ article }) => {
         <div className="mb-2 ">{parseDateTime(article.publishedAt)}</div>
         <div className="mb-2 font-bold ">{article.title}</div>
         <p className="mb-8 overflow-hidden text-sm ">
-          {limitTextLengthAndAddEllipsis(article.summary, 200)}
+          {
+            // Limit text length so all tiles are roughly same height
+            // (each row will be same height)
+            limitTextLength(article.summary, 200)
+          }
         </p>
       </div>
       <a

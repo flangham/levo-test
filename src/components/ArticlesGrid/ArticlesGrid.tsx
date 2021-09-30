@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
-
-interface ArticleFields {
-  id: number;
-  title: string;
-  summary: string;
-  publishedAt: string;
-  url: string;
-}
+import { Article } from '../../interfaces/Article';
 
 export const ArticlesGrid: React.FC = () => {
-  const [articles, setArticles] = useState<ArticleFields[]>([]);
+  // Articles will be an array of the Article type/interface
+  const [articles, setArticles] = useState<Article[]>([]);
 
   // Number of articles which are shown by default,
   // and added each time you 'Load more'
-  const articlesPerLoad: number = 6;
+  const ARTICLES_PER_LOAD: number = 6;
 
-  const [articlesLoaded, setArticlesLoaded] = useState<number>(articlesPerLoad);
+  const [articlesLoaded, setArticlesLoaded] =
+    useState<number>(ARTICLES_PER_LOAD);
 
   useEffect(() => {
     fetch('https://api.spaceflightnewsapi.net/v3/articles')
@@ -24,6 +19,7 @@ export const ArticlesGrid: React.FC = () => {
       .then((data) => setArticles(data));
   }, []);
 
+  // Loading text
   if (articles.length === 0)
     return <h2 className="font-bold text-3xl text-center">Loading...</h2>;
 
@@ -38,10 +34,12 @@ export const ArticlesGrid: React.FC = () => {
         }
       </div>
       {
-        // Hide button once all articles are displayed
+        // Only show button if there are more articles to reveal
         articlesLoaded < articles.length && (
           <button
-            onClick={() => setArticlesLoaded((prev) => prev + articlesPerLoad)}
+            onClick={() =>
+              setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD)
+            }
             className="bg-gray-300 rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
           >
             Load more
