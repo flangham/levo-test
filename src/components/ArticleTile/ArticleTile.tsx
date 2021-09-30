@@ -1,4 +1,5 @@
 import React from 'react';
+import { parseDateTime } from '../../utilities/parseDateTime';
 
 interface Props {
   article: {
@@ -11,10 +12,9 @@ interface Props {
 }
 
 export const ArticleTile: React.FC<Props> = ({ article }) => {
-  console.log(article);
   return (
     <div className="bg-gray-400 p-3">
-      <div className="mb-2">{article.publishedAt}</div>
+      <div className="mb-2">{parseDateTime(article.publishedAt)}</div>
       <div className="mb-2 font-bold">{article.title}</div>
       <p className="mb-2">{article.summary}</p>
       <a
