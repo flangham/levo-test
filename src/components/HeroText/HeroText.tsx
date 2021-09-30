@@ -1,5 +1,6 @@
 import React from 'react';
-export default function HeroText() {
+
+export const HeroText: React.FC = () => {
   return (
     <>
       <h1 className="text-2xl font-bold mb-8">Lorem, ipsum dolor</h1>
@@ -11,4 +12,4 @@ export default function HeroText() {
       </p>
     </>
   );
-}
+};

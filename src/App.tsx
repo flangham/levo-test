@@ -1,7 +1,6 @@
-import React from 'react';
 import './styles/global.css';
 import { ArticlesGrid } from './components/ArticlesGrid/ArticlesGrid';
-import HeroText from './components/HeroText/HeroText';
+import { HeroText } from './components/HeroText/HeroText';
 import { Layout } from './components/Layout/Layout';
 
 function App() {
