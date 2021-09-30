@@ -20,7 +20,7 @@ export const ArticlesGrid: React.FC = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
       {articles.map((article) => (
         <ArticleTile key={uuid()} article={article} />
       ))}
