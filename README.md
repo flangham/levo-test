@@ -12,5 +12,6 @@ I had a lot of fun with this. Given that this was my first time using TypeScript
 - Articles aren't reordered, just displayed in default order as returned from the API
 - There is a max-width of all content at 1152px, centered
 - Articles open in a new tab
+- Page scrolls to bottom when new articles loaded
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
