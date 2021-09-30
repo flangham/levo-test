@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import uuid from 'react-uuid';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
 
 interface ArticleFields {
@@ -12,6 +11,7 @@ interface ArticleFields {
 
 export const ArticlesGrid: React.FC = () => {
   const [articles, setArticles] = useState<ArticleFields[]>([]);
+  // TODO: Display in groups of 6
   const [isShowingAll, setIsShowingAll] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,12 +29,14 @@ export const ArticlesGrid: React.FC = () => {
         {isShowingAll
           ? // Shows all if 'Load more' button clicked
             articles.map((article) => (
-              <ArticleTile key={uuid()} article={article} />
+              <ArticleTile key={article.id} article={article} />
             ))
           : // Only show 6 by default
             articles
               .slice(0, 6)
-              .map((article) => <ArticleTile key={uuid()} article={article} />)}
+              .map((article) => (
+                <ArticleTile key={article.id} article={article} />
+              ))}
       </div>
       {/* Button hides once clicked */}
       {!isShowingAll && (
