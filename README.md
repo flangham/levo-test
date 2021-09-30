@@ -9,6 +9,7 @@ I had a lot of fun with this. Given that this was my first time using TypeScript
 - Built with [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind](https://tailwindcss.com/), and hosted on [Netlify](https://www.netlify.com/)
 - There is a maximum character count for all the article preview text (200), in order to keep all the tiles roughly the same dimensions
 - The site initially displays x number of articles, and the 'Load more' button adds the next x articles, where x is a contant integer
+- Articles aren't reordered, just displayed in default order as returned from the API
 - There is a max-width of all content at 1152px, centered
 - Articles open in a new tab
 
