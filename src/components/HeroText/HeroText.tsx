@@ -3,7 +3,9 @@ import React from 'react';
 export const HeroText: React.FC = () => {
   return (
     <>
-      <h1 className="text-2xl font-bold mb-8">Lorem, ipsum dolor</h1>
+      <h1 className="text-2xl lg:text-4xl font-bold mb-8">
+        Lorem, ipsum dolor
+      </h1>
       <p className="mb-8">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, laborum!
         Magni labore, cupiditate nulla ullam voluptates id doloremque aliquid

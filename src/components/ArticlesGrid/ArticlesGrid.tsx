@@ -42,7 +42,7 @@ export const ArticlesGrid: React.FC = () => {
         articlesLoaded < articles.length && (
           <button
             onClick={() => setArticlesLoaded((prev) => prev + articlesPerLoad)}
-            className="bg-gray-400 border border-black m-auto block p-2 hover:bg-black hover:text-white transition"
+            className="bg-gray-300 rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
           >
             Load more
           </button>
