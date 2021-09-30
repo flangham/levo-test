@@ -25,7 +25,7 @@ export const ArticlesGrid: React.FC = () => {
 
   return (
     <>
-      <div className="grid xs:grid-cols-2 md:grid-cols-3 gap-2 mb-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {isShowingAll
           ? // Shows all if 'Load more' button clicked
             articles.map((article) => (
