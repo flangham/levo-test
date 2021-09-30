@@ -2,6 +2,7 @@ import { useState, useEffect, FC } from 'react';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
 import { Article } from '../../interfaces/Article';
 import { motion } from 'framer-motion';
+import { animateScroll as scroll } from 'react-scroll';
 
 export const ArticlesGrid: FC = () => {
   // Articles will be an array of the Article type/interface
@@ -25,6 +26,18 @@ export const ArticlesGrid: FC = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const handleLoadMore = () => {
+    setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD);
+    setTimeout(
+      () =>
+        scroll.scrollToBottom({
+          duration: 2000,
+          smooth: 'easeInOut',
+        }),
+      100
+    );
+  };
+
   // Display loading text while fetching articles
   if (articles.length === 0)
     return <h2 className="font-bold text-3xl text-center">Loading...</h2>;
@@ -44,8 +57,9 @@ export const ArticlesGrid: FC = () => {
               variants={variants}
               transition={{ ease: 'easeOut', duration: 0.8 }}
               className="flex"
+              key={article.id}
             >
-              <ArticleTile key={article.id} article={article} />
+              <ArticleTile article={article} />
             </motion.div>
           ))
         }
@@ -54,9 +68,7 @@ export const ArticlesGrid: FC = () => {
         // Only show button if there are still more articles to reveal
         articlesLoaded < articles.length && (
           <button
-            onClick={() =>
-              setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD)
-            }
+            onClick={handleLoadMore}
             className="bg-gray-300 rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
           >
             Load more
