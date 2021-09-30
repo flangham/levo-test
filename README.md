@@ -2,7 +2,7 @@
 
 **[View the site here](https://finnian-levo-test.netlify.app/)**.
 
-I had a lot of fun with this. Given that this was my first time using TypeScript and Tailwind, it was definitely frustrating at times, but I learnt a lot which was very satisfying. Once I got the hang of the basics, I really enjoyed working with these technologies, and it's a no-brainer that I'll continue using them for future projects.
+I had a lot of fun with this. Given that this was my first time using TypeScript and Tailwind, it was definitely frustrating at times, but I learnt a lot which was very satisfying. Once I got the hang of the basics, I really enjoyed working with these technologies, and look forward to using them for future projects.
 
 # Notes
 
