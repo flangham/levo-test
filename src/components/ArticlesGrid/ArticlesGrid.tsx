@@ -1,6 +1,7 @@
 import { useState, useEffect, FC } from 'react';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
 import { Article } from '../../interfaces/Article';
+import { motion } from 'framer-motion';
 
 export const ArticlesGrid: FC = () => {
   // Articles will be an array of the Article type/interface
@@ -19,20 +20,36 @@ export const ArticlesGrid: FC = () => {
       .then((data) => setArticles(data));
   }, []);
 
+  const variants = {
+    invisible: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   // Display loading text while fetching articles
   if (articles.length === 0)
     return <h2 className="font-bold text-3xl text-center">Loading...</h2>;
 
   return (
     <>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <motion.div
+        initial="invisible"
+        animate="visible"
+        transition={{ staggerChildren: 0.1 }}
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"
+      >
         {
           // Only show the number of articles that have been 'loaded'
           articles.slice(0, articlesLoaded).map((article) => (
-            <ArticleTile key={article.id} article={article} />
+            <motion.div
+              variants={variants}
+              transition={{ ease: 'easeOut', duration: 0.8 }}
+              className="flex"
+            >
+              <ArticleTile key={article.id} article={article} />
+            </motion.div>
           ))
         }
-      </div>
+      </motion.div>
       {
         // Only show button if there are still more articles to reveal
         articlesLoaded < articles.length && (
