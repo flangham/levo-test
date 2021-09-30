@@ -5,5 +5,7 @@ interface Props {
 }
 
 export const Layout: React.FC<Props> = ({ children }) => (
-  <div className="p-2 lg:py-8 max-w-4xl m-auto">{children}</div>
+  <div className="px-2 pt-4 pb-8 xs:px-4 lg:py-8 max-w-6xl m-auto">
+    {children}
+  </div>
 );
