@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
 import { Article } from '../../interfaces/Article';
 
-export const ArticlesGrid: React.FC = () => {
+export const ArticlesGrid: FC = () => {
   // Articles will be an array of the Article type/interface
   const [articles, setArticles] = useState<Article[]>([]);
 
@@ -19,7 +19,7 @@ export const ArticlesGrid: React.FC = () => {
       .then((data) => setArticles(data));
   }, []);
 
-  // Loading text
+  // Display loading text while fetching articles
   if (articles.length === 0)
     return <h2 className="font-bold text-3xl text-center">Loading...</h2>;
 
@@ -34,7 +34,7 @@ export const ArticlesGrid: React.FC = () => {
         }
       </div>
       {
-        // Only show button if there are more articles to reveal
+        // Only show button if there are still more articles to reveal
         articlesLoaded < articles.length && (
           <button
             onClick={() =>

@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { parseDateTime } from '../../utilities/parseDateTime';
 import { limitTextLength } from '../../utilities/limitTextLength';
 import { Article } from '../../interfaces/Article';
@@ -8,7 +8,7 @@ interface Props {
   article: Article;
 }
 
-export const ArticleTile: React.FC<Props> = ({ article }) => {
+export const ArticleTile: FC<Props> = ({ article }) => {
   return (
     <div className="bg-gray-300 rounded shadow-md p-3 md:p-4 flex flex-col justify-between items-start">
       <div>

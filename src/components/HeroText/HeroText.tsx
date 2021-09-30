@@ -1,6 +1,6 @@
-import React from 'react';
+import { FC } from 'react';
 
-export const HeroText: React.FC = () => {
+export const HeroText: FC = () => {
   return (
     <>
       <h1 className="text-2xl lg:text-4xl font-bold mb-8">
