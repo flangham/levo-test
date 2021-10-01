@@ -72,7 +72,7 @@ export const ArticlesGrid: FC = () => {
         articlesLoaded < articles.length && (
           <button
             onClick={handleLoadMore}
-            className="bg-gray-300 rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
+            className="bg-gray-300 border border-black rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
           >
             Load more
           </button>
