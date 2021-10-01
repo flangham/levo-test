@@ -49,8 +49,6 @@ export const ArticlesGrid: FC = () => {
         initial="invisible"
         animate="visible"
         transition={{ staggerChildren: 0.1 }}
-        // TODO - Add grid gap on mobile / legacy
-        // style={{ margin: '-0.5em' }}
         className="grid sm:grid-cols-2 lg:grid-cols-3 mb-8"
       >
         {
