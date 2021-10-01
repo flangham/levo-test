@@ -28,6 +28,7 @@ export const ArticlesGrid: FC = () => {
 
   const handleLoadMore = () => {
     setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD);
+    // TODO: remove scroll
     setTimeout(
       () =>
         scroll.scrollToBottom({
@@ -48,7 +49,9 @@ export const ArticlesGrid: FC = () => {
         initial="invisible"
         animate="visible"
         transition={{ staggerChildren: 0.1 }}
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"
+        // TODO - Add grid gap on mobile / legacy
+        // style={{ margin: '-0.5em' }}
+        className="grid sm:grid-cols-2 lg:grid-cols-3 mb-8"
       >
         {
           // Only show the number of articles that have been 'loaded'
@@ -56,7 +59,7 @@ export const ArticlesGrid: FC = () => {
             <motion.div
               variants={variants}
               transition={{ ease: 'easeOut', duration: 0.8 }}
-              className="flex"
+              className="flex m-2"
               key={article.id}
             >
               <ArticleTile article={article} />
