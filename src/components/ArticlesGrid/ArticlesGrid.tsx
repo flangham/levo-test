@@ -2,7 +2,6 @@ import { useState, useEffect, FC } from 'react';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
 import { Article } from '../../interfaces/Article';
 import { motion } from 'framer-motion';
-import { animateScroll as scroll } from 'react-scroll';
 
 export const ArticlesGrid: FC = () => {
   // Articles will be an array of the Article type/interface
@@ -28,15 +27,6 @@ export const ArticlesGrid: FC = () => {
 
   const handleLoadMore = () => {
     setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD);
-    // TODO: remove scroll
-    setTimeout(
-      () =>
-        scroll.scrollToBottom({
-          duration: 2000,
-          smooth: 'easeInOut',
-        }),
-      100
-    );
   };
 
   // Display loading text while fetching articles
