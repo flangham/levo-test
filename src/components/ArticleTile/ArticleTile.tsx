@@ -26,7 +26,7 @@ export const ArticleTile: FC<Props> = ({ article }) => {
         href={article.url}
         target="_blank"
         rel="noreferrer noopener"
-        className="border border-black  p-2 rounded px-4 py-2 hover:bg-black hover:text-white transition"
+        className="btn-grey"
       >
         Read more
       </a>

@@ -60,10 +60,7 @@ export const ArticlesGrid: FC = () => {
         <h2 className="text-red-600 mb-4 font-bold text-3xl text-center">
           Failed to load articles
         </h2>
-        <button
-          onClick={fetchArticles}
-          className="bg-gray-300 border border-black rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
-        >
+        <button onClick={fetchArticles} className="btn-grey m-auto">
           Try again
         </button>
       </>
@@ -96,10 +93,7 @@ export const ArticlesGrid: FC = () => {
       {
         // Only show button if there are still more articles to reveal
         articlesLoaded < articles.length && (
-          <button
-            onClick={handleLoadMore}
-            className="bg-gray-300 border border-black rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
-          >
+          <button onClick={handleLoadMore} className="btn-grey m-auto">
             Load more
           </button>
         )
