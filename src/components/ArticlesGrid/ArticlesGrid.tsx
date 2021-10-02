@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, useCallback, FC } from 'react';
 import { ArticleTile } from '../ArticleTile/ArticleTile';
 import { Article } from '../../interfaces/Article';
 import { motion } from 'framer-motion';
@@ -7,31 +7,66 @@ export const ArticlesGrid: FC = () => {
   // Articles will be an array of the Article type/interface
   const [articles, setArticles] = useState<Article[]>([]);
 
+  // Tracks if we fail to fetch API
+  const [isError, setIsError] = useState<boolean>(false);
+
   // Number of articles which are shown by default,
   // and added each time you 'Load more'
   const ARTICLES_PER_LOAD: number = 6;
 
+  // Tracks total number of articles displayed at any time
   const [articlesLoaded, setArticlesLoaded] =
     useState<number>(ARTICLES_PER_LOAD);
 
-  useEffect(() => {
+  // Logs error and enables error state in case of unsuccessful fetch
+  const handleApiFail = (error: any) => {
+    console.error('Failed to get response from API: ', error);
+    setIsError(true);
+  };
+
+  // This function fetches the API
+  const fetchArticles = useCallback(() => {
+    setIsError(false);
     fetch('https://api.spaceflightnewsapi.net/v3/articles')
       .then((res) => res.json())
-      .then((data) => setArticles(data));
+      .then((data) => setArticles(data))
+      .catch((error) => handleApiFail(error));
   }, []);
 
+  // Fetch on mount
+  useEffect(() => {
+    fetchArticles();
+  }, [fetchArticles]);
+
+  // Add ARTICLES_PER_LOAD more articles to number currently displayed
+  const handleLoadMore = () => {
+    setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD);
+  };
+
+  // Variants for animation of article tiles
   const variants = {
     invisible: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
 
-  const handleLoadMore = () => {
-    setArticlesLoaded((prev) => prev + ARTICLES_PER_LOAD);
-  };
-
   // Display loading text while fetching articles
-  if (articles.length === 0)
+  if (articles.length === 0 && !isError)
     return <h2 className="font-bold text-3xl text-center">Loading...</h2>;
+
+  if (isError)
+    return (
+      <>
+        <h2 className="text-red-600 mb-4 font-bold text-3xl text-center">
+          Failed to load articles
+        </h2>
+        <button
+          onClick={fetchArticles}
+          className="bg-gray-300 border border-black rounded shadow-md m-auto block px-4 py-2 hover:bg-black hover:text-white transition"
+        >
+          Try again
+        </button>
+      </>
+    );
 
   return (
     <>
