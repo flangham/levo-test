@@ -53,6 +53,7 @@ export const ArticlesGrid: FC = () => {
   if (articles.length === 0 && !isError)
     return <h2 className="font-bold text-3xl text-center">Loading...</h2>;
 
+  // Error text and button to try again if fetch fails
   if (isError)
     return (
       <>
@@ -68,6 +69,7 @@ export const ArticlesGrid: FC = () => {
       </>
     );
 
+  // Article grid shows once fetch successful
   return (
     <>
       <motion.div
@@ -78,6 +80,7 @@ export const ArticlesGrid: FC = () => {
       >
         {
           // Only show the number of articles that have been 'loaded'
+          // TODO: Figure out how to stagger animation of subsequenly loaded articles
           articles.slice(0, articlesLoaded).map((article) => (
             <motion.div
               variants={variants}
