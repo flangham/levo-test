@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { parseDateTime } from '../../utilities/parseDateTime';
-import { limitTextLength } from '../../utilities/limitTextLength';
 import { Article } from '../../interfaces/Article';
+import { limitWordCount } from '../../utilities/limitWordCount';
 
 // Defines the properties we need to access for every article item in JSON response
 interface Props {
@@ -18,7 +18,7 @@ export const ArticleTile: FC<Props> = ({ article }) => {
           {
             // Limit text length so all tiles are roughly same height
             // (each row will be same height)
-            limitTextLength(article.summary, 200)
+            limitWordCount(article.summary, 20)
           }
         </p>
       </div>
